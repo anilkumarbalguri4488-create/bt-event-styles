@@ -1,0 +1,48 @@
+/* 1. RESET THE MAIN CONTAINER - DISABLE FLEX/ABSOLUTE LOGIC */
+.faq-content[_ngcontent-ng-c3568271570], 
+.faq-items[_ngcontent-ng-c3568271570],
+.conference360-event-faq-container {
+    display: block !important;
+    position: relative !important;
+    height: auto !important;
+    min-height: 100px !important;
+    overflow: visible !important;
+    transform: none !important;
+}
+
+/* 2. FORCE EACH FAQ TO BE A STANDALONE BOX */
+div.faq-item[_ngcontent-ng-c3568271570],
+.conference360-event-faq-item {
+    position: relative !important; /* Forces the box back into the vertical flow */
+    top: 0 !important;
+    left: 0 !important;
+    display: block !important;
+    width: 100% !important;
+    margin-bottom: 24px !important; /* The space between boxes */
+    background: #ffffff !important;
+    border: 1px solid #e0e0e0 !important;
+    border-radius: 8px !important;
+    padding: 0 !important;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05) !important;
+    transform: none !important; /* Kills any sliding animation that causes overlap */
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+/* 3. STYLE THE QUESTION BAR */
+.faq-item-accordion-heading-inner[_ngcontent-ng-c3568271570] {
+    padding: 18px 20px !important;
+    display: flex !important;
+    align-items: center !important;
+}
+
+.item-question[_ngcontent-ng-c3568271570] {
+    color: #18453B !important; /* MSU Green */
+    font-weight: 700 !important;
+}
+
+/* 4. EXPANDED CONTENT STYLING */
+.faq-item-content[_ngcontent-ng-c3568271570] {
+    padding: 0 20px 20px 20px !important;
+    border-top: 1px solid #f0f0f0 !important;
+}
