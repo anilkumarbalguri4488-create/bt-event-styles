@@ -1,20 +1,33 @@
-/* FORCE FAQ ITEMS TO LOOK DYNAMIC IN TABBED UI */
-.conference360-event-faq-item, [class*='faq-item'] {
-    border: 1px solid #d1d1d1 !important;
-    margin-bottom: 12px !important;
-    padding: 18px !important;
-    border-radius: 8px !important;
-    background-color: #ffffff !important;
-    display: block !important;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.06) !important;
+/* 1. Remove the default list styling and background */
+.conference360-event-faq-container, 
+#faq-tab-content {
+    background: transparent !important;
+    padding: 0 !important;
 }
 
-/* FAQ CATEGORY HEADERS (e.g. Participation) */
-.conference360-event-faq-category-header, [class*='faq-category-header'] {
+/* 2. Create the "Dynamic" Box Look for each FAQ */
+.conference360-event-faq-item {
+    background-color: #ffffff !important;
+    border: 1px solid #d1d1d1 !important;
+    border-radius: 8px !important;
+    margin-bottom: 15px !important; /* Space between boxes */
+    padding: 20px !important;
+    display: block !important;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05) !important;
+    transition: transform 0.2s ease-index;
+}
+
+/* 3. Style the Category Headers (Participation, etc.) */
+.conference360-event-faq-category-header {
     color: #18453B !important; /* MSU Green */
-    font-size: 1.4rem !important;
+    font-size: 1.5rem !important;
     font-weight: 800 !important;
-    border-bottom: 2px solid #18453B !important;
-    margin-top: 30px !important;
+    margin: 30px 0 15px 0 !important;
+    border-bottom: 3px solid #18453B !important;
     padding-bottom: 5px !important;
+}
+
+/* 4. Hide the old horizontal lines that Tabbed UI uses */
+.bt-faq-divider, hr {
+    display: none !important;
 }
