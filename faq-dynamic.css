@@ -29,6 +29,7 @@
     opacity: 1 !important;
     visibility: visible !important;
     transform: none !important;
+    transition: none !important; /* Stops the "sliding" animation that causes overlap */
 }
 
 /* 3. STYLE THE HEADERS (Participation, etc.) */
