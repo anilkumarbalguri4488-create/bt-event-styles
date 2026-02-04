@@ -1,44 +1,139 @@
-/* 1. RESET THE ENTIRE CONTENT AREA */
+/* 1. RESET CONTAINERS - VERTICAL FLOW */
 .conference360-event-faq-container, 
 #faq-tab-content,
-.conference360-event-tab-content-container,
 .bt-faq-category-container {
     display: flex !important;
-    flex-direction: column !important; /* Forces vertical list */
+    flex-direction: column !important;
     position: relative !important;
     height: auto !important;
-    min-height: 100px !important;
     overflow: visible !important;
-    transform: none !important;
 }
 
-/* 2. KILL THE STACKED CARDS POSITIONING */
-.conference360-event-faq-item, 
-[class*='faq-item'] {
-    position: relative !important; /* THIS IS THE FIX: it stops the overlapping */
+/* 2. CATEGORY HEADERS */
+.conference360-event-faq-category-header {
+    position: relative !important;
+    color: #333 !important;
+    font-size: 1.1rem !important;
+    font-weight: 700 !important;
+    margin: 30px 0 16px 0 !important;
+    padding-bottom: 8px !important;
+    border-bottom: 2px solid #e0e0e0 !important;
+    text-transform: none !important;
+}
+
+/* 3. FAQ ACCORDION ITEM */
+.conference360-event-faq-item {
+    position: relative !important;
     top: auto !important;
     left: auto !important;
     display: block !important;
     width: 100% !important;
-    margin-bottom: 25px !important; /* Space between boxes */
+    margin-bottom: 12px !important;
     background-color: #ffffff !important;
-    border: 1px solid #d1d1d1 !important;
+    border: 1px solid #e0e0e0 !important;
     border-radius: 8px !important;
-    padding: 20px !important;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1) !important;
-    transform: none !important; /* Stops the sliding animation */
-    opacity: 1 !important;
-    visibility: visible !important;
+    overflow: hidden !important;
+    transform: none !important;
+    transition: box-shadow 0.2s ease !important;
 }
 
-/* 3. STYLE THE HEADERS (Participation, Registration, etc.) */
-.conference360-event-faq-category-header {
-    position: relative !important;
-    display: block !important;
-    color: #18453B !important; /* MSU Green */
-    font-size: 1.8rem !important;
-    font-weight: 800 !important;
-    margin: 40px 0 20px 0 !important;
-    border-bottom: 3px solid #18453B !important;
-    padding-bottom: 10px !important;
+.conference360-event-faq-item:hover {
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08) !important;
+}
+
+/* 4. REMOVE NESTED BORDERS */
+.conference360-event-faq-item > * {
+    border: none !important;
+    box-shadow: none !important;
+    background: transparent !important;
+}
+
+/* 5. FAQ QUESTION/HEADER (CLICKABLE) */
+.conference360-event-faq-item .faq-question,
+.conference360-event-faq-item > button,
+.conference360-event-faq-item > div:first-child {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    width: 100% !important;
+    padding: 18px 20px !important;
+    margin: 0 !important;
+    background: transparent !important;
+    border: none !important;
+    text-align: left !important;
+    cursor: pointer !important;
+    font-size: 1rem !important;
+    font-weight: 600 !important;
+    color: #333 !important;
+    transition: background-color 0.2s ease !important;
+}
+
+.conference360-event-faq-item .faq-question:hover,
+.conference360-event-faq-item > button:hover {
+    background-color: #f8f8f8 !important;
+}
+
+/* 6. QUESTION ICON (?) */
+.conference360-event-faq-item .faq-question::before,
+.conference360-event-faq-item > button::before {
+    content: "?" !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 20px !important;
+    height: 20px !important;
+    margin-right: 12px !important;
+    background-color: #18453B !important;
+    color: white !important;
+    border-radius: 50% !important;
+    font-size: 0.85rem !important;
+    font-weight: 700 !important;
+    flex-shrink: 0 !important;
+}
+
+/* 7. CHEVRON/ARROW */
+.conference360-event-faq-item .faq-question::after,
+.conference360-event-faq-item > button::after {
+    content: "›" !important;
+    font-size: 1.5rem !important;
+    color: #999 !important;
+    transform: rotate(90deg) !important;
+    transition: transform 0.3s ease !important;
+    flex-shrink: 0 !important;
+    margin-left: auto !important;
+}
+
+/* 8. EXPANDED STATE - ROTATE ARROW */
+.conference360-event-faq-item.active .faq-question::after,
+.conference360-event-faq-item.active > button::after,
+.conference360-event-faq-item.expanded .faq-question::after,
+.conference360-event-faq-item.expanded > button::after {
+    transform: rotate(-90deg) !important;
+}
+
+/* 9. FAQ ANSWER (COLLAPSIBLE CONTENT) */
+.conference360-event-faq-item .faq-answer,
+.conference360-event-faq-item .faq-content {
+    max-height: 0 !important;
+    overflow: hidden !important;
+    transition: max-height 0.3s ease !important;
+    background: transparent !important;
+    border: none !important;
+    padding: 0 20px !important;
+}
+
+.conference360-event-faq-item.active .faq-answer,
+.conference360-event-faq-item.active .faq-content,
+.conference360-event-faq-item.expanded .faq-answer,
+.conference360-event-faq-item.expanded .faq-content {
+    max-height: 1000px !important;
+    padding: 0 20px 18px 52px !important; /* Indent to align with question text */
+}
+
+.conference360-event-faq-item .faq-answer p,
+.conference360-event-faq-item .faq-content p {
+    margin: 0 0 12px 0 !important;
+    color: #666 !important;
+    font-size: 0.95rem !important;
+    line-height: 1.6 !important;
 }
