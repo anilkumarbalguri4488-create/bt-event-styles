@@ -1,11 +1,15 @@
-/* ===== REMOVE ALL WRAPPER BORDERS ===== */
+/* ================================================================
+   FAQ ACCORDION - CLEAN SINGLE-BORDER STYLE
+   ================================================================ */
+
+/* ===== RESET ALL WRAPPER CONTAINERS ===== */
 .faq-content[_ngcontent-ng-c3568271570],
 .faq-content-list,
 .faq-list-item,
 section.faq-content,
 .faq-category[_ngcontent-ng-c3568271570],
 .faq-category-header,
-label.faq-category-header {
+label.faq-category-header[_ngcontent-ng-c3568271570] {
     border: none !important;
     background: transparent !important;
     box-shadow: none !important;
@@ -13,27 +17,37 @@ label.faq-category-header {
     margin: 0 !important;
 }
 
-/* Remove borders from ALL .faq-items containers */
+/* Remove borders from ALL nested .faq-items containers */
 div.faq-items[_ngcontent-ng-c3568271570] {
     border: none !important;
     background: transparent !important;
     box-shadow: none !important;
     padding: 0 !important;
-    margin: 0 !important;
+    margin: 0 0 12px 0 !important;
     display: block !important;
 }
 
-/* ===== CATEGORY HEADER STYLING ===== */
-.faq-category-accordion-heading-inner h2 {
+/* ===== CATEGORY HEADER ===== */
+.faq-category-accordion-heading-inner[_ngcontent-ng-c3568271570] {
     color: #333 !important;
     font-size: 1.1rem !important;
     font-weight: 700 !important;
     margin: 30px 0 16px 0 !important;
-    padding-bottom: 8px !important;
+    padding: 16px 0 8px 0 !important;
+    border: none !important;
     border-bottom: 2px solid #e0e0e0 !important;
+    background: transparent !important;
 }
 
-/* ===== INDIVIDUAL FAQ ITEM - SINGLE BORDER ONLY ===== */
+.faq-category-accordion-heading-inner h2 {
+    margin: 0 !important;
+    padding: 0 !important;
+    font-size: inherit !important;
+    font-weight: inherit !important;
+    color: inherit !important;
+}
+
+/* ===== INDIVIDUAL FAQ ITEM - ONLY BORDER HERE ===== */
 div.faq-item[_ngcontent-ng-c3568271570] {
     background: #ffffff !important;
     border: 1px solid #e0e0e0 !important;
@@ -49,24 +63,28 @@ div.faq-item[_ngcontent-ng-c3568271570]:hover {
     box-shadow: 0 2px 8px rgba(0,0,0,0.08) !important;
 }
 
-/* ===== REMOVE NESTED ELEMENT BORDERS ===== */
+/* ===== REMOVE ALL NESTED ELEMENT BORDERS ===== */
+.faq-item[_ngcontent-ng-c3568271570] label,
+.faq-item[_ngcontent-ng-c3568271570] div,
 .faq-item-header[_ngcontent-ng-c3568271570],
 .faq-item-accordion-heading-inner[_ngcontent-ng-c3568271570],
 .faq-item-content[_ngcontent-ng-c3568271570],
 .item-question[_ngcontent-ng-c3568271570],
 .bt-rich-text,
+.bt-rich-text[_nghost-ng-c1573015594],
 .bt-rich-text .content {
     border: none !important;
     background: transparent !important;
     box-shadow: none !important;
 }
 
-/* ===== HEADER (CLICKABLE) ===== */
+/* ===== CLICKABLE HEADER ===== */
 label.faq-item-header[_ngcontent-ng-c3568271570] {
     display: block !important;
     cursor: pointer !important;
     padding: 0 !important;
     margin: 0 !important;
+    width: 100% !important;
 }
 
 /* ===== HIDE CHECKBOX ===== */
@@ -74,9 +92,11 @@ label.faq-item-header[_ngcontent-ng-c3568271570] {
     position: absolute !important;
     opacity: 0 !important;
     pointer-events: none !important;
+    width: 0 !important;
+    height: 0 !important;
 }
 
-/* ===== ACCORDION HEADING ===== */
+/* ===== ACCORDION HEADING (Question + Arrow) ===== */
 .faq-item-accordion-heading-inner[_ngcontent-ng-c3568271570] {
     display: flex !important;
     align-items: center !important;
@@ -84,6 +104,7 @@ label.faq-item-header[_ngcontent-ng-c3568271570] {
     padding: 18px 20px !important;
     transition: background-color 0.2s ease !important;
     margin: 0 !important;
+    gap: 16px !important;
 }
 
 .faq-item-header:hover .faq-item-accordion-heading-inner {
@@ -99,15 +120,21 @@ label.faq-item-header[_ngcontent-ng-c3568271570] {
     padding-left: 32px !important;
     position: relative !important;
     margin: 0 !important;
+    line-height: 1.4 !important;
 }
 
-/* ===== GREEN QUESTION MARK ICON ===== */
+.item-question[_ngcontent-ng-c3568271570] .bt-rich-text,
+.item-question[_ngcontent-ng-c3568271570] .content {
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+/* ===== GREEN QUESTION MARK CIRCLE ===== */
 .item-question[_ngcontent-ng-c3568271570]::before {
     content: "?" !important;
     position: absolute !important;
     left: 0 !important;
-    top: 50% !important;
-    transform: translateY(-50%) !important;
+    top: 2px !important;
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
@@ -118,48 +145,94 @@ label.faq-item-header[_ngcontent-ng-c3568271570] {
     border-radius: 50% !important;
     font-size: 0.85rem !important;
     font-weight: 700 !important;
+    flex-shrink: 0 !important;
 }
 
 /* ===== ARROW ICONS ===== */
+span.icons.arrow-down-icon[_ngcontent-ng-c3568271570],
+span.icons.arrow-up-icon[_ngcontent-ng-c3568271570] {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    color: #999 !important;
+    flex-shrink: 0 !important;
+    width: 24px !important;
+    height: 24px !important;
+}
+
+span.icons.arrow-down-icon[_ngcontent-ng-c3568271570] {
+    display: flex !important;
+}
+
+span.icons.arrow-up-icon[_ngcontent-ng-c3568271570] {
+    display: none !important;
+}
+
+/* Toggle arrows when expanded */
+.faq-item-accordion-heading-checkbox[_ngcontent-ng-c3568271570]:checked ~ 
+.faq-item-accordion-heading-inner[_ngcontent-ng-c3568271570] 
 .arrow-down-icon[_ngcontent-ng-c3568271570] {
-    color: #999 !important;
-    display: block !important;
+    display: none !important;
 }
 
+.faq-item-accordion-heading-checkbox[_ngcontent-ng-c3568271570]:checked ~ 
+.faq-item-accordion-heading-inner[_ngcontent-ng-c3568271570] 
 .arrow-up-icon[_ngcontent-ng-c3568271570] {
-    color: #999 !important;
-    display: none !important;
+    display: flex !important;
 }
 
-/* Toggle arrows on expand */
-.faq-item-accordion-heading-checkbox:checked ~ .faq-item-accordion-heading-inner .arrow-down-icon {
-    display: none !important;
-}
-
-.faq-item-accordion-heading-checkbox:checked ~ .faq-item-accordion-heading-inner .arrow-up-icon {
-    display: block !important;
-}
-
-/* ===== FAQ CONTENT (ANSWER) ===== */
+/* ===== FAQ CONTENT (ANSWER) - COLLAPSED BY DEFAULT ===== */
 .faq-item-content[_ngcontent-ng-c3568271570] {
     max-height: 0 !important;
     overflow: hidden !important;
-    transition: max-height 0.3s ease, padding 0.3s ease !important;
+    transition: max-height 0.4s ease, padding 0.4s ease !important;
     padding: 0 20px !important;
     margin: 0 !important;
 }
 
-/* Expanded state */
-.faq-item-accordion-heading-checkbox:checked ~ .faq-item-content {
-    max-height: 2000px !important;
-    padding: 0 20px 18px 52px !important;
+/* ===== EXPANDED STATE ===== */
+.faq-item-accordion-heading-checkbox[_ngcontent-ng-c3568271570]:checked ~ 
+.faq-item-content[_ngcontent-ng-c3568271570] {
+    max-height: 3000px !important;
+    padding: 0 20px 20px 52px !important;
 }
 
-/* Answer text styling */
-.faq-item-content .content {
+/* ===== ANSWER TEXT STYLING ===== */
+.faq-item-content[_ngcontent-ng-c3568271570] .bt-rich-text,
+.faq-item-content[_ngcontent-ng-c3568271570] .content {
     color: #666 !important;
     font-size: 0.95rem !important;
     line-height: 1.6 !important;
     padding: 0 !important;
     margin: 0 !important;
+}
+
+/* ===== REMOVE ANY LEGACY STYLES ===== */
+.conference360-event-faq-container,
+.conference360-event-faq-item,
+.conference360-event-faq-category-header {
+    all: unset !important;
+}
+
+/* ===== RESPONSIVE ADJUSTMENTS ===== */
+@media (max-width: 768px) {
+    .faq-item-accordion-heading-inner[_ngcontent-ng-c3568271570] {
+        padding: 14px 16px !important;
+    }
+    
+    .item-question[_ngcontent-ng-c3568271570] {
+        font-size: 0.95rem !important;
+        padding-left: 28px !important;
+    }
+    
+    .item-question[_ngcontent-ng-c3568271570]::before {
+        width: 18px !important;
+        height: 18px !important;
+        font-size: 0.75rem !important;
+    }
+    
+    .faq-item-accordion-heading-checkbox[_ngcontent-ng-c3568271570]:checked ~ 
+    .faq-item-content[_ngcontent-ng-c3568271570] {
+        padding: 0 16px 16px 44px !important;
+    }
 }
