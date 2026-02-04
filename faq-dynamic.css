@@ -1,0 +1,20 @@
+/* FORCE FAQ ITEMS TO LOOK DYNAMIC IN TABBED UI */
+.conference360-event-faq-item, [class*='faq-item'] {
+    border: 1px solid #d1d1d1 !important;
+    margin-bottom: 12px !important;
+    padding: 18px !important;
+    border-radius: 8px !important;
+    background-color: #ffffff !important;
+    display: block !important;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.06) !important;
+}
+
+/* FAQ CATEGORY HEADERS (e.g. Participation) */
+.conference360-event-faq-category-header, [class*='faq-category-header'] {
+    color: #18453B !important; /* MSU Green */
+    font-size: 1.4rem !important;
+    font-weight: 800 !important;
+    border-bottom: 2px solid #18453B !important;
+    margin-top: 30px !important;
+    padding-bottom: 5px !important;
+}
