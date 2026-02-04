@@ -1,96 +1,89 @@
-/* ===== 1. RESET THE ENTIRE TAB CONTENT AREA ===== */
+/* ===== 0. REMOVE BORDERS FROM ALL WRAPPER/CONTAINER ELEMENTS ===== */
+/* This is the KEY FIX - prevents nested borders */
+.conference360-event-tab-content-container,
+.conference360-event-faq-container,
 #faq-tab-content,
-.conference360-event-faq-container, 
-.faq-content[_ngcontent-ng-c3568271570], 
-.faq-items[_ngcontent-ng-c3568271570] {
+[class*="faq-content"],
+[class*="faq-category"],
+[class*="faq-list"],
+section[class*="faq"],
+ul[class*="faq"],
+li[class*="faq"] {
+    border: none !important;
+    box-shadow: none !important;
+    background: transparent !important;
+    padding: 0 !important;
+}
+
+/* ===== 1. FORCE EVERY CONTAINER TO EXPAND VERTICALLY ===== */
+.conference360-event-tab-content-container,
+.conference360-event-faq-container,
+#faq-tab-content,
+[class*="faq-content"],
+[class*="faq-items"] {
     display: block !important;
     position: relative !important;
     height: auto !important;
-    min-height: 500px !important;
+    min-height: 1000px !important; /* Force space so items don't hide */
     overflow: visible !important;
     transform: none !important;
-    /* FIX: Remove any borders from container elements */
-    border: none !important;
-    background: transparent !important;
-    box-shadow: none !important;
-    padding: 0 !important;
 }
 
-/* ===== 2. REMOVE BORDERS FROM ALL WRAPPER ELEMENTS ===== */
-.faq-content-list,
-.faq-list-item,
-section.faq-content,
-.faq-category[_ngcontent-ng-c3568271570],
-.faq-category-header,
-label.faq-category-header[_ngcontent-ng-c3568271570] {
-    border: none !important;
-    background: transparent !important;
-    box-shadow: none !important;
-    padding: 0 !important;
-}
-
-/* ===== 3. CATEGORY HEADER STYLING ===== */
-.faq-category-accordion-heading-inner[_ngcontent-ng-c3568271570] h2,
-.conference360-event-faq-category-header {
-    color: #18453B !important; /* MSU Green */
-    font-size: 1.8rem !important;
-    font-weight: 800 !important;
-    margin: 40px 0 20px 0 !important;
-    border-bottom: 3px solid #18453B !important;
-    padding-bottom: 10px !important;
-}
-
-/* ===== 4. INDIVIDUAL FAQ ITEM - STANDALONE BOX (ONLY BORDER HERE) ===== */
+/* ===== 2. KILL THE STACKED CARD EFFECT - ONLY BORDER HERE ===== */
+div.faq-item,
 .conference360-event-faq-item,
-div.faq-item[_ngcontent-ng-c3568271570] {
-    position: relative !important;
+[class*="faq-item"][class*="ng"] {
+    position: relative !important; /* This is the key to stop overlapping */
     display: block !important;
-    top: auto !important; 
-    left: auto !important;
+    top: 0 !important;             /* Overwrites the JS-calculated position */
+    left: 0 !important;
     width: 100% !important;
-    margin-bottom: 25px !important;
+    margin-bottom: 30px !important; /* Space between the boxes */
     background: #ffffff !important;
     border: 1px solid #d1d1d1 !important;
     border-radius: 8px !important;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1) !important;
-    transform: none !important;
+    transform: none !important;     /* Stops any sliding animations */
     opacity: 1 !important;
     visibility: visible !important;
     overflow: hidden !important;
     padding: 0 !important;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1) !important;
 }
 
-div.faq-item[_ngcontent-ng-c3568271570]:hover {
+div.faq-item:hover,
+[class*="faq-item"][class*="ng"]:hover {
     box-shadow: 0 6px 14px rgba(0,0,0,0.15) !important;
 }
 
-/* ===== 5. REMOVE BORDERS FROM NESTED ELEMENTS ===== */
-.faq-item[_ngcontent-ng-c3568271570] label,
-.faq-item[_ngcontent-ng-c3568271570] > div,
-.faq-item-header[_ngcontent-ng-c3568271570],
-.faq-item-accordion-heading-inner[_ngcontent-ng-c3568271570] {
+/* ===== 2b. REMOVE BORDERS FROM NESTED ELEMENTS INSIDE FAQ ITEMS ===== */
+[class*="faq-item"] label,
+[class*="faq-item"] > div,
+[class*="faq-item-header"],
+[class*="faq-item-accordion"],
+[class*="faq-item"] [class*="inner"] {
     border: none !important;
     background: transparent !important;
     box-shadow: none !important;
 }
 
-/* ===== 6. CLICKABLE HEADER ===== */
-label.faq-item-header[_ngcontent-ng-c3568271570] {
+/* ===== 3. CLICKABLE HEADER ===== */
+[class*="faq-item-header"] {
     display: block !important;
     cursor: pointer !important;
     padding: 0 !important;
     margin: 0 !important;
 }
 
-/* ===== 7. HIDE CHECKBOX ===== */
-.faq-item-accordion-heading-checkbox[_ngcontent-ng-c3568271570] {
+/* ===== 4. HIDE CHECKBOX ===== */
+[class*="faq-item-accordion-heading-checkbox"],
+input[type="checkbox"][class*="faq"] {
     position: absolute !important;
     opacity: 0 !important;
     pointer-events: none !important;
 }
 
-/* ===== 8. ACCORDION HEADING (contains question + arrow) ===== */
-.faq-item-accordion-heading-inner[_ngcontent-ng-c3568271570] {
+/* ===== 5. ACCORDION HEADING (Question + Arrow Container) ===== */
+[class*="faq-item-accordion-heading-inner"] {
     display: flex !important;
     align-items: center !important;
     justify-content: space-between !important;
@@ -98,14 +91,15 @@ label.faq-item-header[_ngcontent-ng-c3568271570] {
     transition: background-color 0.2s ease !important;
 }
 
-.faq-item-header:hover .faq-item-accordion-heading-inner {
+[class*="faq-item-header"]:hover [class*="faq-item-accordion-heading-inner"] {
     background-color: #f8f8f8 !important;
 }
 
-/* ===== 9. QUESTION TEXT STYLING ===== */
-.item-question[_ngcontent-ng-c3568271570] {
+/* ===== 6. MSU GREEN QUESTION TEXT ===== */
+.item-question, 
+[class*="item-question"] {
     flex: 1 !important;
-    color: #18453B !important; /* MSU Green */
+    color: #18453B !important; 
     font-weight: 800 !important;
     font-size: 1.1rem !important;
     padding-left: 32px !important;
@@ -113,14 +107,15 @@ label.faq-item-header[_ngcontent-ng-c3568271570] {
     margin: 0 !important;
 }
 
-.item-question[_ngcontent-ng-c3568271570] .bt-rich-text,
-.item-question[_ngcontent-ng-c3568271570] .content {
+[class*="item-question"] [class*="bt-rich-text"],
+[class*="item-question"] .content {
     padding: 0 !important;
     margin: 0 !important;
 }
 
-/* ===== 10. GREEN QUESTION MARK ICON ===== */
-.item-question[_ngcontent-ng-c3568271570]::before {
+/* ===== 7. GREEN QUESTION MARK CIRCLE ===== */
+.item-question::before,
+[class*="item-question"]::before {
     content: "?" !important;
     position: absolute !important;
     left: 0 !important;
@@ -137,53 +132,50 @@ label.faq-item-header[_ngcontent-ng-c3568271570] {
     font-weight: 700 !important;
 }
 
-/* ===== 11. ARROW ICONS ===== */
-span.icons.arrow-down-icon[_ngcontent-ng-c3568271570] {
+/* ===== 8. ARROW ICONS ===== */
+[class*="arrow-down-icon"] {
     display: flex !important;
     color: #18453B !important;
 }
 
-span.icons.arrow-up-icon[_ngcontent-ng-c3568271570] {
+[class*="arrow-up-icon"] {
     display: none !important;
     color: #18453B !important;
 }
 
 /* Toggle arrows when expanded */
-.faq-item-accordion-heading-checkbox[_ngcontent-ng-c3568271570]:checked ~ 
-.faq-item-accordion-heading-inner[_ngcontent-ng-c3568271570] 
-.arrow-down-icon[_ngcontent-ng-c3568271570] {
+input[type="checkbox"]:checked ~ [class*="accordion-heading-inner"] [class*="arrow-down-icon"] {
     display: none !important;
 }
 
-.faq-item-accordion-heading-checkbox[_ngcontent-ng-c3568271570]:checked ~ 
-.faq-item-accordion-heading-inner[_ngcontent-ng-c3568271570] 
-.arrow-up-icon[_ngcontent-ng-c3568271570] {
+input[type="checkbox"]:checked ~ [class*="accordion-heading-inner"] [class*="arrow-up-icon"] {
     display: flex !important;
 }
 
-/* ===== 12. ANSWER AREA (COLLAPSED BY DEFAULT) ===== */
-.faq-item-content[_ngcontent-ng-c3568271570] {
+/* ===== 9. ANSWER AREA (COLLAPSED BY DEFAULT) ===== */
+.faq-item-content,
+[class*="faq-item-content"] {
     max-height: 0 !important;
     overflow: hidden !important;
-    transition: max-height 0.4s ease, padding 0.4s ease !important;
+    transition: max-height 0.4s ease, padding 0.4s ease, border 0.4s ease !important;
     padding: 0 20px !important;
-    border-top: none !important;
     background-color: transparent !important;
+    border-top: none !important;
 }
 
-/* ===== 13. EXPANDED STATE ===== */
-.faq-item-accordion-heading-checkbox[_ngcontent-ng-c3568271570]:checked ~ 
-.faq-item-content[_ngcontent-ng-c3568271570] {
+/* ===== 10. EXPANDED STATE ===== */
+input[type="checkbox"]:checked ~ .faq-item-content,
+input[type="checkbox"]:checked ~ [class*="faq-item-content"] {
     max-height: 3000px !important;
     padding: 20px !important;
     padding-left: 52px !important; /* Align with question text */
-    border-top: 1px solid #f0f0f0 !important;
-    background-color: #fafafa !important;
+    background-color: #f9f9f9 !important;
+    border-top: 1px solid #eeeeee !important;
 }
 
-/* ===== 14. ANSWER TEXT STYLING ===== */
-.faq-item-content[_ngcontent-ng-c3568271570] .bt-rich-text,
-.faq-item-content[_ngcontent-ng-c3568271570] .content {
+/* ===== 11. ANSWER TEXT STYLING ===== */
+[class*="faq-item-content"] [class*="bt-rich-text"],
+[class*="faq-item-content"] .content {
     color: #666 !important;
     font-size: 0.95rem !important;
     line-height: 1.6 !important;
@@ -191,25 +183,35 @@ span.icons.arrow-up-icon[_ngcontent-ng-c3568271570] {
     margin: 0 !important;
 }
 
-/* ===== 15. RESPONSIVE ADJUSTMENTS ===== */
+/* ===== 12. CATEGORY HEADERS ===== */
+[class*="faq-category-header"],
+.conference360-event-faq-category-header {
+    color: #18453B !important;
+    font-size: 1.8rem !important;
+    font-weight: 800 !important;
+    margin: 40px 0 20px 0 !important;
+    padding-bottom: 10px !important;
+    border-bottom: 3px solid #18453B !important;
+}
+
+/* ===== 13. RESPONSIVE ADJUSTMENTS ===== */
 @media (max-width: 768px) {
-    .faq-item-accordion-heading-inner[_ngcontent-ng-c3568271570] {
+    [class*="faq-item-accordion-heading-inner"] {
         padding: 16px !important;
     }
     
-    .item-question[_ngcontent-ng-c3568271570] {
+    [class*="item-question"] {
         font-size: 1rem !important;
         padding-left: 28px !important;
     }
     
-    .item-question[_ngcontent-ng-c3568271570]::before {
+    [class*="item-question"]::before {
         width: 20px !important;
         height: 20px !important;
         font-size: 0.85rem !important;
     }
     
-    .faq-item-accordion-heading-checkbox[_ngcontent-ng-c3568271570]:checked ~ 
-    .faq-item-content[_ngcontent-ng-c3568271570] {
+    input[type="checkbox"]:checked ~ [class*="faq-item-content"] {
         padding: 16px !important;
         padding-left: 44px !important;
     }
