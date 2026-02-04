@@ -1,36 +1,36 @@
-/* 1. FORCE THE CONTAINER TO UN-STACK CARDS */
+/* 1. RESET THE MAIN WRAPPER */
 .conference360-event-faq-container, 
 #faq-tab-content,
 .bt-faq-category-container {
-    display: flex !important;
-    flex-direction: column !important; /* Forces items into a vertical line */
+    display: block !important;
     position: relative !important;
     height: auto !important;
+    min-height: 100px !important;
     overflow: visible !important;
 }
 
-/* 2. STYLE INDIVIDUAL FAQ BOXES */
+/* 2. FORCE EACH FAQ TO BE A STANDALONE BOX */
 .conference360-event-faq-item {
-    position: relative !important; /* This is the "kill switch" for the stacking */
-    top: auto !important;
-    left: auto !important;
+    position: relative !important; /* This is what stops the overlapping */
+    top: 0 !important;
+    left: 0 !important;
     display: block !important;
     width: 100% !important;
-    margin-bottom: 25px !important; /* Creates the space between boxes */
+    margin-bottom: 24px !important; /* Creates the space between the boxes */
     background-color: #ffffff !important;
     border: 1px solid #d1d1d1 !important;
     border-radius: 8px !important;
     padding: 20px !important;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.08) !important;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1) !important;
+    transform: none !important; /* Removes any "sliding" or "stacking" animations */
 }
 
 /* 3. STYLE THE HEADERS (Participation, etc.) */
 .conference360-event-faq-category-header {
     position: relative !important;
     color: #18453B !important; /* MSU Green */
-    font-size: 1.6rem !important;
+    font-size: 1.8rem !important;
     font-weight: 800 !important;
-    margin: 30px 0 15px 0 !important;
+    margin: 40px 0 20px 0 !important;
     border-bottom: 3px solid #18453B !important;
-    padding-bottom: 8px !important;
 }
