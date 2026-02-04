@@ -1,11 +1,11 @@
-/* 1. STRIP ALL BORDERS FROM WRAPPER ELEMENTS */
+/* ===== REMOVE ALL WRAPPER BORDERS ===== */
+.faq-content[_ngcontent-ng-c3568271570],
 .faq-content-list,
-.faq-list-item, 
-.faq-content,
-.faq-category,
-.faq-category-header label,
+.faq-list-item,
 section.faq-content,
-div.faq-category {
+.faq-category[_ngcontent-ng-c3568271570],
+.faq-category-header,
+label.faq-category-header {
     border: none !important;
     background: transparent !important;
     box-shadow: none !important;
@@ -13,69 +13,76 @@ div.faq-category {
     margin: 0 !important;
 }
 
-/* 2. STRIP BORDERS FROM ALL .faq-items CONTAINERS */
-.faq-items {
+/* Remove borders from ALL .faq-items containers */
+div.faq-items[_ngcontent-ng-c3568271570] {
     border: none !important;
     background: transparent !important;
     box-shadow: none !important;
     padding: 0 !important;
-    margin: 0 0 12px 0 !important;
+    margin: 0 !important;
     display: block !important;
 }
 
-/* 3. CATEGORY HEADER */
-.faq-category-accordion-heading-inner {
+/* ===== CATEGORY HEADER STYLING ===== */
+.faq-category-accordion-heading-inner h2 {
     color: #333 !important;
     font-size: 1.1rem !important;
     font-weight: 700 !important;
     margin: 30px 0 16px 0 !important;
     padding-bottom: 8px !important;
     border-bottom: 2px solid #e0e0e0 !important;
-    background: transparent !important;
 }
 
-/* 4. ONLY THE INDIVIDUAL FAQ ITEM GETS A BORDER */
-div.faq-item {
+/* ===== INDIVIDUAL FAQ ITEM - SINGLE BORDER ONLY ===== */
+div.faq-item[_ngcontent-ng-c3568271570] {
     background: #ffffff !important;
     border: 1px solid #e0e0e0 !important;
     border-radius: 8px !important;
     overflow: hidden !important;
-    transition: box-shadow 0.2s ease !important;
     margin: 0 0 12px 0 !important;
     padding: 0 !important;
     box-shadow: none !important;
+    transition: box-shadow 0.2s ease !important;
 }
 
-div.faq-item:hover {
+div.faq-item[_ngcontent-ng-c3568271570]:hover {
     box-shadow: 0 2px 8px rgba(0,0,0,0.08) !important;
 }
 
-/* 5. HEADER */
-.faq-item-header {
+/* ===== REMOVE NESTED ELEMENT BORDERS ===== */
+.faq-item-header[_ngcontent-ng-c3568271570],
+.faq-item-accordion-heading-inner[_ngcontent-ng-c3568271570],
+.faq-item-content[_ngcontent-ng-c3568271570],
+.item-question[_ngcontent-ng-c3568271570],
+.bt-rich-text,
+.bt-rich-text .content {
+    border: none !important;
+    background: transparent !important;
+    box-shadow: none !important;
+}
+
+/* ===== HEADER (CLICKABLE) ===== */
+label.faq-item-header[_ngcontent-ng-c3568271570] {
     display: block !important;
     cursor: pointer !important;
     padding: 0 !important;
     margin: 0 !important;
-    border: none !important;
-    background: transparent !important;
 }
 
-/* 6. HIDE CHECKBOX */
-.faq-item-accordion-heading-checkbox {
+/* ===== HIDE CHECKBOX ===== */
+.faq-item-accordion-heading-checkbox[_ngcontent-ng-c3568271570] {
     position: absolute !important;
     opacity: 0 !important;
     pointer-events: none !important;
 }
 
-/* 7. HEADING INNER */
-.faq-item-accordion-heading-inner {
+/* ===== ACCORDION HEADING ===== */
+.faq-item-accordion-heading-inner[_ngcontent-ng-c3568271570] {
     display: flex !important;
     align-items: center !important;
     justify-content: space-between !important;
     padding: 18px 20px !important;
     transition: background-color 0.2s ease !important;
-    border: none !important;
-    background: transparent !important;
     margin: 0 !important;
 }
 
@@ -83,8 +90,8 @@ div.faq-item:hover {
     background-color: #f8f8f8 !important;
 }
 
-/* 8. QUESTION TEXT */
-.item-question {
+/* ===== QUESTION TEXT ===== */
+.item-question[_ngcontent-ng-c3568271570] {
     flex: 1 !important;
     font-size: 1rem !important;
     font-weight: 600 !important;
@@ -94,16 +101,8 @@ div.faq-item:hover {
     margin: 0 !important;
 }
 
-.item-question .bt-rich-text,
-.item-question .content {
-    border: none !important;
-    background: transparent !important;
-    padding: 0 !important;
-    margin: 0 !important;
-}
-
-/* 9. GREEN ? ICON */
-.item-question::before {
+/* ===== GREEN QUESTION MARK ICON ===== */
+.item-question[_ngcontent-ng-c3568271570]::before {
     content: "?" !important;
     position: absolute !important;
     left: 0 !important;
@@ -121,17 +120,18 @@ div.faq-item:hover {
     font-weight: 700 !important;
 }
 
-/* 10. ARROWS */
-.arrow-down-icon {
+/* ===== ARROW ICONS ===== */
+.arrow-down-icon[_ngcontent-ng-c3568271570] {
     color: #999 !important;
     display: block !important;
 }
 
-.arrow-up-icon {
+.arrow-up-icon[_ngcontent-ng-c3568271570] {
     color: #999 !important;
     display: none !important;
 }
 
+/* Toggle arrows on expand */
 .faq-item-accordion-heading-checkbox:checked ~ .faq-item-accordion-heading-inner .arrow-down-icon {
     display: none !important;
 }
@@ -140,29 +140,26 @@ div.faq-item:hover {
     display: block !important;
 }
 
-/* 11. CONTENT */
-.faq-item-content {
+/* ===== FAQ CONTENT (ANSWER) ===== */
+.faq-item-content[_ngcontent-ng-c3568271570] {
     max-height: 0 !important;
     overflow: hidden !important;
     transition: max-height 0.3s ease, padding 0.3s ease !important;
     padding: 0 20px !important;
-    border: none !important;
-    background: transparent !important;
     margin: 0 !important;
 }
 
+/* Expanded state */
 .faq-item-accordion-heading-checkbox:checked ~ .faq-item-content {
     max-height: 2000px !important;
     padding: 0 20px 18px 52px !important;
 }
 
-.faq-item-content .bt-rich-text,
+/* Answer text styling */
 .faq-item-content .content {
     color: #666 !important;
     font-size: 0.95rem !important;
     line-height: 1.6 !important;
-    border: none !important;
-    background: transparent !important;
     padding: 0 !important;
     margin: 0 !important;
 }
