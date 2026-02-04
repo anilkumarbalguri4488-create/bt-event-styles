@@ -1,139 +1,148 @@
-/* 1. RESET CONTAINERS - VERTICAL FLOW */
+/* 1. RESET CONTAINERS */
 .conference360-event-faq-container, 
 #faq-tab-content,
-.bt-faq-category-container {
+.bt-faq-category-container,
+.faq-items {
     display: flex !important;
     flex-direction: column !important;
     position: relative !important;
     height: auto !important;
     overflow: visible !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    background: transparent !important;
+    border: none !important;
 }
 
 /* 2. CATEGORY HEADERS */
 .conference360-event-faq-category-header {
-    position: relative !important;
     color: #333 !important;
     font-size: 1.1rem !important;
     font-weight: 700 !important;
     margin: 30px 0 16px 0 !important;
     padding-bottom: 8px !important;
     border-bottom: 2px solid #e0e0e0 !important;
-    text-transform: none !important;
 }
 
-/* 3. FAQ ACCORDION ITEM */
-.conference360-event-faq-item {
+/* 3. SINGLE FAQ ITEM - CLEAN BOX */
+.faq-item {
     position: relative !important;
-    top: auto !important;
-    left: auto !important;
-    display: block !important;
     width: 100% !important;
     margin-bottom: 12px !important;
     background-color: #ffffff !important;
     border: 1px solid #e0e0e0 !important;
     border-radius: 8px !important;
     overflow: hidden !important;
-    transform: none !important;
-    transition: box-shadow 0.2s ease !important;
+    box-shadow: none !important;
+    padding: 0 !important;
 }
 
-.conference360-event-faq-item:hover {
+.faq-item:hover {
     box-shadow: 0 2px 8px rgba(0,0,0,0.08) !important;
 }
 
-/* 4. REMOVE NESTED BORDERS */
-.conference360-event-faq-item > * {
+/* 4. REMOVE ALL NESTED BORDERS AND BACKGROUNDS */
+.faq-item * {
     border: none !important;
-    box-shadow: none !important;
     background: transparent !important;
+    box-shadow: none !important;
 }
 
-/* 5. FAQ QUESTION/HEADER (CLICKABLE) */
-.conference360-event-faq-item .faq-question,
-.conference360-event-faq-item > button,
-.conference360-event-faq-item > div:first-child {
+/* 5. FAQ HEADER (CLICKABLE AREA) */
+.faq-item-header {
+    display: block !important;
+    width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    cursor: pointer !important;
+}
+
+/* 6. ACCORDION HEADING */
+.faq-item-accordion-heading-inner {
     display: flex !important;
     align-items: center !important;
     justify-content: space-between !important;
-    width: 100% !important;
     padding: 18px 20px !important;
-    margin: 0 !important;
-    background: transparent !important;
-    border: none !important;
-    text-align: left !important;
-    cursor: pointer !important;
-    font-size: 1rem !important;
-    font-weight: 600 !important;
-    color: #333 !important;
     transition: background-color 0.2s ease !important;
 }
 
-.conference360-event-faq-item .faq-question:hover,
-.conference360-event-faq-item > button:hover {
+.faq-item-header:hover .faq-item-accordion-heading-inner {
     background-color: #f8f8f8 !important;
 }
 
-/* 6. QUESTION ICON (?) */
-.conference360-event-faq-item .faq-question::before,
-.conference360-event-faq-item > button::before {
+/* 7. QUESTION TEXT */
+.item-question {
+    flex: 1 !important;
+    font-size: 1rem !important;
+    font-weight: 600 !important;
+    color: #18453B !important;
+    padding-left: 32px !important;
+    position: relative !important;
+}
+
+/* 8. QUESTION MARK ICON */
+.item-question::before {
     content: "?" !important;
-    display: inline-flex !important;
+    position: absolute !important;
+    left: 0 !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    display: flex !important;
     align-items: center !important;
     justify-content: center !important;
     width: 20px !important;
     height: 20px !important;
-    margin-right: 12px !important;
     background-color: #18453B !important;
     color: white !important;
     border-radius: 50% !important;
     font-size: 0.85rem !important;
     font-weight: 700 !important;
-    flex-shrink: 0 !important;
 }
 
-/* 7. CHEVRON/ARROW */
-.conference360-event-faq-item .faq-question::after,
-.conference360-event-faq-item > button::after {
-    content: "›" !important;
-    font-size: 1.5rem !important;
+/* 9. HIDE CHECKBOX */
+.faq-item-accordion-heading-checkbox {
+    display: none !important;
+}
+
+/* 10. ARROW ICONS */
+.arrow-down-icon,
+.arrow-up-icon {
     color: #999 !important;
-    transform: rotate(90deg) !important;
+    font-size: 1.5rem !important;
     transition: transform 0.3s ease !important;
-    flex-shrink: 0 !important;
-    margin-left: auto !important;
+    margin-left: 12px !important;
 }
 
-/* 8. EXPANDED STATE - ROTATE ARROW */
-.conference360-event-faq-item.active .faq-question::after,
-.conference360-event-faq-item.active > button::after,
-.conference360-event-faq-item.expanded .faq-question::after,
-.conference360-event-faq-item.expanded > button::after {
-    transform: rotate(-90deg) !important;
+.arrow-up-icon {
+    display: none !important;
 }
 
-/* 9. FAQ ANSWER (COLLAPSIBLE CONTENT) */
-.conference360-event-faq-item .faq-answer,
-.conference360-event-faq-item .faq-content {
+/* Show up arrow when checked */
+.faq-item-accordion-heading-checkbox:checked ~ .faq-item-accordion-heading-inner .arrow-down-icon {
+    display: none !important;
+}
+
+.faq-item-accordion-heading-checkbox:checked ~ .faq-item-accordion-heading-inner .arrow-up-icon {
+    display: block !important;
+}
+
+/* 11. FAQ CONTENT (ANSWER) */
+.faq-item-content {
     max-height: 0 !important;
     overflow: hidden !important;
-    transition: max-height 0.3s ease !important;
-    background: transparent !important;
-    border: none !important;
+    transition: max-height 0.3s ease, padding 0.3s ease !important;
     padding: 0 20px !important;
 }
 
-.conference360-event-faq-item.active .faq-answer,
-.conference360-event-faq-item.active .faq-content,
-.conference360-event-faq-item.expanded .faq-answer,
-.conference360-event-faq-item.expanded .faq-content {
-    max-height: 1000px !important;
-    padding: 0 20px 18px 52px !important; /* Indent to align with question text */
+.faq-item-accordion-heading-checkbox:checked ~ .faq-item-content {
+    max-height: 2000px !important;
+    padding: 0 20px 18px 52px !important;
 }
 
-.conference360-event-faq-item .faq-answer p,
-.conference360-event-faq-item .faq-content p {
-    margin: 0 0 12px 0 !important;
+.faq-item-content .content {
     color: #666 !important;
     font-size: 0.95rem !important;
     line-height: 1.6 !important;
+    margin: 0 !important;
+    padding: 0 !important;
 }
