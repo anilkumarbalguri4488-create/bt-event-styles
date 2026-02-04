@@ -1,21 +1,15 @@
 /* 1. RESET CONTAINERS */
-.conference360-event-faq-container, 
-#faq-tab-content,
-.bt-faq-category-container,
+.faq-content[_ngcontent-ng-c3568271570],
 .faq-items {
     display: flex !important;
     flex-direction: column !important;
-    position: relative !important;
-    height: auto !important;
-    overflow: visible !important;
+    gap: 0 !important;
     padding: 0 !important;
     margin: 0 !important;
-    background: transparent !important;
-    border: none !important;
 }
 
 /* 2. CATEGORY HEADERS */
-.conference360-event-faq-category-header {
+.faq-category[_ngcontent-ng-c3568271570] {
     color: #333 !important;
     font-size: 1.1rem !important;
     font-weight: 700 !important;
@@ -24,40 +18,54 @@
     border-bottom: 2px solid #e0e0e0 !important;
 }
 
-/* 3. SINGLE FAQ ITEM - CLEAN BOX */
-.faq-item {
+/* 3. OVERRIDE THE EXISTING .conference360-event-faq-item STYLES */
+.conference360-event-faq-item[class*="faq-item"] {
+    border: 1px solid #e0e0e0 !important;
+    margin-bottom: 12px !important;
+    padding: 0 !important;
+    border-radius: 8px !important;
+    box-sizing: border-box !important;
+    background: #ffffff !important;
+    box-shadow: none !important;
+}
+
+/* 4. THE ACTUAL FAQ ITEM */
+div.faq-item {
     position: relative !important;
     width: 100% !important;
-    margin-bottom: 12px !important;
+    margin: 0 0 12px 0 !important;
+    padding: 0 !important;
     background-color: #ffffff !important;
     border: 1px solid #e0e0e0 !important;
     border-radius: 8px !important;
     overflow: hidden !important;
-    box-shadow: none !important;
-    padding: 0 !important;
+    box-sizing: border-box !important;
 }
 
-.faq-item:hover {
-    box-shadow: 0 2px 8px rgba(0,0,0,0.08) !important;
-}
-
-/* 4. REMOVE ALL NESTED BORDERS AND BACKGROUNDS */
-.faq-item * {
+/* 5. REMOVE NESTED ELEMENT BORDERS */
+.faq-item label,
+.faq-item-header,
+.faq-item-accordion-heading-inner,
+.faq-item-content,
+.item-question,
+.bt-rich-text,
+.bt-rich-text .content {
     border: none !important;
     background: transparent !important;
     box-shadow: none !important;
+    box-sizing: border-box !important;
+    margin: 0 !important;
 }
 
-/* 5. FAQ HEADER (CLICKABLE AREA) */
+/* 6. FAQ HEADER */
 .faq-item-header {
     display: block !important;
     width: 100% !important;
     padding: 0 !important;
-    margin: 0 !important;
     cursor: pointer !important;
 }
 
-/* 6. ACCORDION HEADING */
+/* 7. ACCORDION HEADING */
 .faq-item-accordion-heading-inner {
     display: flex !important;
     align-items: center !important;
@@ -70,7 +78,12 @@
     background-color: #f8f8f8 !important;
 }
 
-/* 7. QUESTION TEXT */
+/* 8. HIDE CHECKBOX */
+.faq-item-accordion-heading-checkbox {
+    display: none !important;
+}
+
+/* 9. QUESTION TEXT */
 .item-question {
     flex: 1 !important;
     font-size: 1rem !important;
@@ -80,7 +93,7 @@
     position: relative !important;
 }
 
-/* 8. QUESTION MARK ICON */
+/* 10. QUESTION MARK ICON */
 .item-question::before {
     content: "?" !important;
     position: absolute !important;
@@ -99,17 +112,10 @@
     font-weight: 700 !important;
 }
 
-/* 9. HIDE CHECKBOX */
-.faq-item-accordion-heading-checkbox {
-    display: none !important;
-}
-
-/* 10. ARROW ICONS */
+/* 11. ARROW ICONS */
 .arrow-down-icon,
 .arrow-up-icon {
     color: #999 !important;
-    font-size: 1.5rem !important;
-    transition: transform 0.3s ease !important;
     margin-left: 12px !important;
 }
 
@@ -117,7 +123,6 @@
     display: none !important;
 }
 
-/* Show up arrow when checked */
 .faq-item-accordion-heading-checkbox:checked ~ .faq-item-accordion-heading-inner .arrow-down-icon {
     display: none !important;
 }
@@ -126,11 +131,11 @@
     display: block !important;
 }
 
-/* 11. FAQ CONTENT (ANSWER) */
+/* 12. FAQ CONTENT */
 .faq-item-content {
     max-height: 0 !important;
     overflow: hidden !important;
-    transition: max-height 0.3s ease, padding 0.3s ease !important;
+    transition: max-height 0.3s ease !important;
     padding: 0 20px !important;
 }
 
@@ -143,6 +148,4 @@
     color: #666 !important;
     font-size: 0.95rem !important;
     line-height: 1.6 !important;
-    margin: 0 !important;
-    padding: 0 !important;
 }
