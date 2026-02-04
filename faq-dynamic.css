@@ -1,50 +1,78 @@
-/* FAQ CONTAINER */
+/* REMOVE ALL BORDERS FROM PARENT WRAPPERS */
+.faq-content,
+.faq-content-list,
+.faq-list-item,
+.faq-category,
+.faq-items {
+    border: none !important;
+    background: transparent !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    box-shadow: none !important;
+}
+
+/* CATEGORY HEADER */
+.faq-category-header h2 {
+    color: #333;
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin: 30px 0 16px 0;
+    padding-bottom: 8px;
+    border-bottom: 2px solid #e0e0e0;
+}
+
+/* FAQ ITEMS CONTAINER */
 .faq-items {
     display: flex;
     flex-direction: column;
     gap: 12px;
-    padding: 0;
 }
 
-/* INDIVIDUAL FAQ ITEM - SINGLE CLEAN BOX */
+/* INDIVIDUAL FAQ ITEM - ONLY BORDER HERE */
 .faq-item {
     background: #ffffff;
-    border: 1px solid #e0e0e0;
+    border: 1px solid #e0e0e0 !important;
     border-radius: 8px;
     overflow: hidden;
     transition: box-shadow 0.2s ease;
+    margin: 0 !important;
+    padding: 0 !important;
 }
 
 .faq-item:hover {
     box-shadow: 0 2px 8px rgba(0,0,0,0.08);
 }
 
-/* HEADER (CLICKABLE AREA) */
+/* HEADER */
 .faq-item-header {
     display: block;
     cursor: pointer;
     padding: 0;
     margin: 0;
+    border: none !important;
+    background: transparent !important;
 }
 
-/* HIDE THE CHECKBOX */
+/* HIDE CHECKBOX */
 .faq-item-accordion-heading-checkbox {
     position: absolute;
     opacity: 0;
     pointer-events: none;
 }
 
-/* HEADING INNER (CONTAINS QUESTION + ARROW) */
+/* HEADING INNER */
 .faq-item-accordion-heading-inner {
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 18px 20px;
     transition: background-color 0.2s ease;
+    border: none !important;
+    background: transparent !important;
 }
 
 .faq-item-header:hover .faq-item-accordion-heading-inner {
-    background-color: #f8f8f8;
+    background-color: #f8f8f8 !important;
 }
 
 /* QUESTION TEXT */
@@ -55,6 +83,14 @@
     color: #18453B;
     padding-left: 32px;
     position: relative;
+}
+
+.item-question .bt-rich-text,
+.item-question .content {
+    border: none !important;
+    background: transparent !important;
+    padding: 0 !important;
+    margin: 0 !important;
 }
 
 /* GREEN CIRCLE WITH ? */
@@ -76,7 +112,7 @@
     font-weight: 700;
 }
 
-/* ARROW ICONS */
+/* ARROWS */
 .arrow-down-icon {
     color: #999;
     display: block;
@@ -87,7 +123,6 @@
     display: none;
 }
 
-/* TOGGLE ARROWS WHEN EXPANDED */
 .faq-item-accordion-heading-checkbox:checked ~ .faq-item-accordion-heading-inner .arrow-down-icon {
     display: none;
 }
@@ -96,23 +131,28 @@
     display: block;
 }
 
-/* FAQ ANSWER (COLLAPSED BY DEFAULT) */
+/* FAQ CONTENT */
 .faq-item-content {
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.3s ease, padding 0.3s ease;
     padding: 0 20px;
+    border: none !important;
+    background: transparent !important;
 }
 
-/* EXPANDED STATE */
 .faq-item-accordion-heading-checkbox:checked ~ .faq-item-content {
     max-height: 2000px;
     padding: 0 20px 18px 52px;
 }
 
-/* ANSWER TEXT */
+.faq-item-content .bt-rich-text,
 .faq-item-content .content {
     color: #666;
     font-size: 0.95rem;
     line-height: 1.6;
+    border: none !important;
+    background: transparent !important;
+    padding: 0 !important;
+    margin: 0 !important;
 }
