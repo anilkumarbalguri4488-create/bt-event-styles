@@ -1,4 +1,4 @@
-/* 1. RESET THE ENTIRE TAB CONTENT AREA */
+/* ===== 1. RESET THE ENTIRE TAB CONTENT AREA ===== */
 #faq-tab-content,
 .conference360-event-faq-container, 
 .faq-content[_ngcontent-ng-c3568271570], 
@@ -6,15 +6,44 @@
     display: block !important;
     position: relative !important;
     height: auto !important;
-    min-height: 500px !important; /* Forces the container to expand */
+    min-height: 500px !important;
     overflow: visible !important;
     transform: none !important;
+    /* FIX: Remove any borders from container elements */
+    border: none !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    padding: 0 !important;
 }
 
-/* 2. FORCE EACH FAQ TO BE A STANDALONE BOX (UNSTACKED) */
+/* ===== 2. REMOVE BORDERS FROM ALL WRAPPER ELEMENTS ===== */
+.faq-content-list,
+.faq-list-item,
+section.faq-content,
+.faq-category[_ngcontent-ng-c3568271570],
+.faq-category-header,
+label.faq-category-header[_ngcontent-ng-c3568271570] {
+    border: none !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+}
+
+/* ===== 3. CATEGORY HEADER STYLING ===== */
+.faq-category-accordion-heading-inner[_ngcontent-ng-c3568271570] h2,
+.conference360-event-faq-category-header {
+    color: #18453B !important; /* MSU Green */
+    font-size: 1.8rem !important;
+    font-weight: 800 !important;
+    margin: 40px 0 20px 0 !important;
+    border-bottom: 3px solid #18453B !important;
+    padding-bottom: 10px !important;
+}
+
+/* ===== 4. INDIVIDUAL FAQ ITEM - STANDALONE BOX (ONLY BORDER HERE) ===== */
 .conference360-event-faq-item,
 div.faq-item[_ngcontent-ng-c3568271570] {
-    position: relative !important; /* This kills the 'absolute' stacking */
+    position: relative !important;
     display: block !important;
     top: auto !important; 
     left: auto !important;
@@ -27,18 +56,161 @@ div.faq-item[_ngcontent-ng-c3568271570] {
     transform: none !important;
     opacity: 1 !important;
     visibility: visible !important;
+    overflow: hidden !important;
+    padding: 0 !important;
 }
 
-/* 3. STYLE THE QUESTION HEADERS */
+div.faq-item[_ngcontent-ng-c3568271570]:hover {
+    box-shadow: 0 6px 14px rgba(0,0,0,0.15) !important;
+}
+
+/* ===== 5. REMOVE BORDERS FROM NESTED ELEMENTS ===== */
+.faq-item[_ngcontent-ng-c3568271570] label,
+.faq-item[_ngcontent-ng-c3568271570] > div,
+.faq-item-header[_ngcontent-ng-c3568271570],
+.faq-item-accordion-heading-inner[_ngcontent-ng-c3568271570] {
+    border: none !important;
+    background: transparent !important;
+    box-shadow: none !important;
+}
+
+/* ===== 6. CLICKABLE HEADER ===== */
+label.faq-item-header[_ngcontent-ng-c3568271570] {
+    display: block !important;
+    cursor: pointer !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+/* ===== 7. HIDE CHECKBOX ===== */
+.faq-item-accordion-heading-checkbox[_ngcontent-ng-c3568271570] {
+    position: absolute !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+}
+
+/* ===== 8. ACCORDION HEADING (contains question + arrow) ===== */
+.faq-item-accordion-heading-inner[_ngcontent-ng-c3568271570] {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    padding: 20px !important;
+    transition: background-color 0.2s ease !important;
+}
+
+.faq-item-header:hover .faq-item-accordion-heading-inner {
+    background-color: #f8f8f8 !important;
+}
+
+/* ===== 9. QUESTION TEXT STYLING ===== */
 .item-question[_ngcontent-ng-c3568271570] {
+    flex: 1 !important;
     color: #18453B !important; /* MSU Green */
     font-weight: 800 !important;
     font-size: 1.1rem !important;
+    padding-left: 32px !important;
+    position: relative !important;
+    margin: 0 !important;
 }
 
-/* 4. STYLE THE ANSWER AREA */
+.item-question[_ngcontent-ng-c3568271570] .bt-rich-text,
+.item-question[_ngcontent-ng-c3568271570] .content {
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+/* ===== 10. GREEN QUESTION MARK ICON ===== */
+.item-question[_ngcontent-ng-c3568271570]::before {
+    content: "?" !important;
+    position: absolute !important;
+    left: 0 !important;
+    top: 2px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 22px !important;
+    height: 22px !important;
+    background-color: #18453B !important;
+    color: white !important;
+    border-radius: 50% !important;
+    font-size: 0.9rem !important;
+    font-weight: 700 !important;
+}
+
+/* ===== 11. ARROW ICONS ===== */
+span.icons.arrow-down-icon[_ngcontent-ng-c3568271570] {
+    display: flex !important;
+    color: #18453B !important;
+}
+
+span.icons.arrow-up-icon[_ngcontent-ng-c3568271570] {
+    display: none !important;
+    color: #18453B !important;
+}
+
+/* Toggle arrows when expanded */
+.faq-item-accordion-heading-checkbox[_ngcontent-ng-c3568271570]:checked ~ 
+.faq-item-accordion-heading-inner[_ngcontent-ng-c3568271570] 
+.arrow-down-icon[_ngcontent-ng-c3568271570] {
+    display: none !important;
+}
+
+.faq-item-accordion-heading-checkbox[_ngcontent-ng-c3568271570]:checked ~ 
+.faq-item-accordion-heading-inner[_ngcontent-ng-c3568271570] 
+.arrow-up-icon[_ngcontent-ng-c3568271570] {
+    display: flex !important;
+}
+
+/* ===== 12. ANSWER AREA (COLLAPSED BY DEFAULT) ===== */
 .faq-item-content[_ngcontent-ng-c3568271570] {
+    max-height: 0 !important;
+    overflow: hidden !important;
+    transition: max-height 0.4s ease, padding 0.4s ease !important;
+    padding: 0 20px !important;
+    border-top: none !important;
+    background-color: transparent !important;
+}
+
+/* ===== 13. EXPANDED STATE ===== */
+.faq-item-accordion-heading-checkbox[_ngcontent-ng-c3568271570]:checked ~ 
+.faq-item-content[_ngcontent-ng-c3568271570] {
+    max-height: 3000px !important;
     padding: 20px !important;
+    padding-left: 52px !important; /* Align with question text */
     border-top: 1px solid #f0f0f0 !important;
     background-color: #fafafa !important;
+}
+
+/* ===== 14. ANSWER TEXT STYLING ===== */
+.faq-item-content[_ngcontent-ng-c3568271570] .bt-rich-text,
+.faq-item-content[_ngcontent-ng-c3568271570] .content {
+    color: #666 !important;
+    font-size: 0.95rem !important;
+    line-height: 1.6 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+/* ===== 15. RESPONSIVE ADJUSTMENTS ===== */
+@media (max-width: 768px) {
+    .faq-item-accordion-heading-inner[_ngcontent-ng-c3568271570] {
+        padding: 16px !important;
+    }
+    
+    .item-question[_ngcontent-ng-c3568271570] {
+        font-size: 1rem !important;
+        padding-left: 28px !important;
+    }
+    
+    .item-question[_ngcontent-ng-c3568271570]::before {
+        width: 20px !important;
+        height: 20px !important;
+        font-size: 0.85rem !important;
+    }
+    
+    .faq-item-accordion-heading-checkbox[_ngcontent-ng-c3568271570]:checked ~ 
+    .faq-item-content[_ngcontent-ng-c3568271570] {
+        padding: 16px !important;
+        padding-left: 44px !important;
+    }
 }
