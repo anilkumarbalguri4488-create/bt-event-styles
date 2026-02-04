@@ -1,40 +1,35 @@
-/* 1. BREAK THE STACKED CARD EFFECT */
+/* 1. FORCE THE CONTAINER TO BE A VERTICAL LIST */
 .conference360-event-faq-container, 
-[class*="faq-container"] {
-    display: block !important; /* Forces vertical stacking instead of overlapping */
+#faq-tab-content,
+.bt-faq-category-container {
+    display: flex !important;
+    flex-direction: column !important;
     position: relative !important;
+    height: auto !important;
 }
 
-/* 2. STYLE INDIVIDUAL FAQ BOXES */
-.conference360-event-faq-item, 
-[class*="faq-item"] {
-    position: relative !important;
+/* 2. KILL THE "STACKED CARD" POSITIONING */
+.conference360-event-faq-item {
+    position: relative !important; /* This is the key to stop overlapping */
+    top: auto !important;
+    left: auto !important;
     display: block !important;
     width: 100% !important;
     margin-bottom: 20px !important; /* Creates the space between boxes */
-    background: #ffffff !important;
-    border: 1px solid #e0e0e0 !important;
+    background-color: #ffffff !important;
+    border: 1px solid #d1d1d1 !important;
     border-radius: 8px !important;
     padding: 20px !important;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.05) !important;
-    top: auto !important; /* Removes any absolute stacking */
-    left: auto !important;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08) !important;
 }
 
-/* 3. STYLE THE HEADERS (Participation, etc.) */
+/* 3. ENSURE HEADERS STAY ON TOP OF THEIR GROUPS */
 .conference360-event-faq-category-header {
+    position: relative !important;
+    display: block !important;
     color: #18453B !important; /* MSU Green */
     font-size: 1.6rem !important;
     font-weight: 800 !important;
-    margin: 40px 0 20px 0 !important;
+    margin: 30px 0 15px 0 !important;
     border-bottom: 3px solid #18453B !important;
-    display: flex !important;
-    align-items: center;
-}
-
-/* 4. CLEAN UP THE ANSWER TEXT */
-.bt-faq-answer {
-    padding-top: 15px !important;
-    border-top: 1px solid #f0f0f0;
-    margin-top: 10px;
 }
