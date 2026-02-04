@@ -1,33 +1,40 @@
-/* 1. Remove the default list styling and background */
+/* 1. BREAK THE STACKED CARD EFFECT */
 .conference360-event-faq-container, 
-#faq-tab-content {
-    background: transparent !important;
-    padding: 0 !important;
+[class*="faq-container"] {
+    display: block !important; /* Forces vertical stacking instead of overlapping */
+    position: relative !important;
 }
 
-/* 2. Create the "Dynamic" Box Look for each FAQ */
-.conference360-event-faq-item {
-    background-color: #ffffff !important;
-    border: 1px solid #d1d1d1 !important;
-    border-radius: 8px !important;
-    margin-bottom: 15px !important; /* Space between boxes */
-    padding: 20px !important;
+/* 2. STYLE INDIVIDUAL FAQ BOXES */
+.conference360-event-faq-item, 
+[class*="faq-item"] {
+    position: relative !important;
     display: block !important;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.05) !important;
-    transition: transform 0.2s ease-index;
+    width: 100% !important;
+    margin-bottom: 20px !important; /* Creates the space between boxes */
+    background: #ffffff !important;
+    border: 1px solid #e0e0e0 !important;
+    border-radius: 8px !important;
+    padding: 20px !important;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05) !important;
+    top: auto !important; /* Removes any absolute stacking */
+    left: auto !important;
 }
 
-/* 3. Style the Category Headers (Participation, etc.) */
+/* 3. STYLE THE HEADERS (Participation, etc.) */
 .conference360-event-faq-category-header {
     color: #18453B !important; /* MSU Green */
-    font-size: 1.5rem !important;
+    font-size: 1.6rem !important;
     font-weight: 800 !important;
-    margin: 30px 0 15px 0 !important;
+    margin: 40px 0 20px 0 !important;
     border-bottom: 3px solid #18453B !important;
-    padding-bottom: 5px !important;
+    display: flex !important;
+    align-items: center;
 }
 
-/* 4. Hide the old horizontal lines that Tabbed UI uses */
-.bt-faq-divider, hr {
-    display: none !important;
+/* 4. CLEAN UP THE ANSWER TEXT */
+.bt-faq-answer {
+    padding-top: 15px !important;
+    border-top: 1px solid #f0f0f0;
+    margin-top: 10px;
 }
