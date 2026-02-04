@@ -1,49 +1,49 @@
 /* 1. RESET THE ENTIRE TAB CONTENT AREA */
 .conference360-event-faq-container, 
 #faq-tab-content,
-.faq-content[_ngcontent-ng-c3568271570], 
-.faq-items[_ngcontent-ng-c3568271570] {
-    display: block !important;
+.conference360-event-tab-content-container,
+.bt-faq-category-container {
+    display: flex !important;
+    flex-direction: column !important; /* Forces vertical list */
     position: relative !important;
     height: auto !important;
-    min-height: 500px !important;
+    min-height: 800px !important; /* Prevents the container from collapsing */
     overflow: visible !important;
     transform: none !important;
 }
 
-/* 2. FORCE EACH FAQ TO BE A STANDALONE BOX (UNSTACKED) */
-div.faq-item[_ngcontent-ng-c3568271570],
-.conference360-event-faq-item {
-    position: relative !important;
-    display: block !important;
-    top: 0 !important; 
+/* 2. KILL THE "DECK OF CARDS" STACKING */
+.conference360-event-faq-item, 
+div.faq-item,
+[class*='faq-item'] {
+    position: relative !important; /* THE CORE FIX: stops the overlapping */
+    top: 0 !important;             /* Kills the JS 'top' pixel injection */
     left: 0 !important;
+    display: block !important;
     width: 100% !important;
-    margin-bottom: 24px !important;
+    margin-bottom: 25px !important; /* Forces space between boxes */
     background: #ffffff !important;
-    border: 1px solid #e0e0e0 !important;
+    border: 1px solid #d1d1d1 !important;
     border-radius: 8px !important;
     padding: 0 !important;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.05) !important;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1) !important;
     transform: none !important;
     opacity: 1 !important;
     visibility: visible !important;
 }
 
-/* 3. STYLE THE QUESTION BAR (MSU GREEN) */
-.faq-item-accordion-heading-inner[_ngcontent-ng-c3568271570] {
-    padding: 18px 20px !important;
-    display: flex !important;
-    align-items: center !important;
-}
-
-.item-question[_ngcontent-ng-c3568271570] {
+/* 3. STYLE THE QUESTION HEADERS */
+.item-question, 
+[class*='item-question'] {
     color: #18453B !important; /* MSU Green */
-    font-weight: 700 !important;
+    font-weight: 800 !important;
+    padding: 15px 15px 15px 40px !important;
 }
 
-/* 4. EXPANDED CONTENT STYLING */
-.faq-item-content[_ngcontent-ng-c3568271570] {
-    padding: 0 20px 20px 20px !important;
-    border-top: 1px solid #f0f0f0 !important;
+/* 4. EXPANDED ANSWER BOX */
+.faq-item-content,
+[class*='faq-item-content'] {
+    padding: 20px !important;
+    background-color: #f9f9f9 !important;
+    border-top: 1px solid #eeeeee !important;
 }
