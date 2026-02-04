@@ -1,272 +1,47 @@
-/* ================================================================
-   FAQ ACCORDION - CLEAN BOXED DESIGN (MATCHING REFERENCE IMAGE)
-   ================================================================ */
-
-/* ===== REMOVE ALL WRAPPER/CONTAINER BORDERS ===== */
-.conference360-event-tab-content-container,
-.conference360-event-faq-container,
-#faq-tab-content,
-.faq-content,
-[class*="faq-content"],
-[class*="faq-category"],
-[class*="faq-list"],
-[class*="faq-items"],
-section[class*="faq"],
-ul[class*="faq"],
-li[class*="faq"] {
-    border: none !important;
-    box-shadow: none !important;
-    background: transparent !important;
-    padding: 0 !important;
-    margin: 0 !important;
-}
-
-/* ===== FORCE VERTICAL LAYOUT ===== */
-.conference360-event-tab-content-container,
-.conference360-event-faq-container,
+/* 1. FORCE THE MAIN CONTAINER TO EXPAND VERTICALLY */
+.conference360-event-faq-container, 
 #faq-tab-content,
 [class*="faq-content"],
 [class*="faq-items"] {
-    display: block !important;
+    display: flex !important;
+    flex-direction: column !important; /* This forces a vertical list */
     position: relative !important;
     height: auto !important;
-    min-height: 1000px !important;
+    min-height: 1200px !important;
     overflow: visible !important;
     transform: none !important;
 }
 
-/* ===== CATEGORY HEADER STYLING ===== */
-[class*="faq-category-header"],
-.conference360-event-faq-category-header,
-[class*="faq-category"] > label h2,
-[class*="faq-category-accordion-heading-inner"] {
-    color: #333 !important;
-    font-size: 0.9rem !important;
-    font-weight: 700 !important;
-    text-transform: uppercase !important;
-    letter-spacing: 0.5px !important;
-    margin: 30px 0 16px 0 !important;
-    padding: 0 0 12px 0 !important;
-    border: none !important;
-    border-bottom: 2px solid #e0e0e0 !important;
-    background: transparent !important;
-}
-
-/* Add the folder icon before category headers */
-[class*="faq-category-header"]::before,
-.conference360-event-faq-category-header::before {
-    content: "📁" !important;
-    margin-right: 8px !important;
-    font-size: 1.1rem !important;
-}
-
-/* ===== INDIVIDUAL FAQ ITEM - CLEAN WHITE BOX ===== */
+/* 2. KILL THE STACKED CARD POSITIONING (THE CORE FIX) */
 div.faq-item,
 .conference360-event-faq-item,
-[class*="faq-item"][class*="ng"] {
-    position: relative !important;
+[class*="faq-item"] {
+    position: relative !important; /* Stops the boxes from overlapping */
+    top: 0 !important;             /* Kills the script-calculated top pixels */
+    left: 0 !important;            /* Kills the script-calculated left pixels */
     display: block !important;
-    top: 0 !important;
-    left: 0 !important;
     width: 100% !important;
-    margin: 0 0 12px 0 !important;
+    margin-bottom: 25px !important; /* Forces real space between boxes */
     background: #ffffff !important;
-    border: 1px solid #e0e0e0 !important;
+    border: 1px solid #d1d1d1 !important;
     border-radius: 8px !important;
-    transform: none !important;
+    transform: none !important;     /* Stops the sliding animation */
     opacity: 1 !important;
     visibility: visible !important;
-    overflow: hidden !important;
-    padding: 0 !important;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.06) !important;
-    transition: box-shadow 0.2s ease !important;
 }
 
-div.faq-item:hover,
-[class*="faq-item"][class*="ng"]:hover {
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1) !important;
-}
-
-/* ===== REMOVE NESTED ELEMENT BORDERS ===== */
-[class*="faq-item"] label,
-[class*="faq-item"] > div,
-[class*="faq-item-header"],
-[class*="faq-item-accordion"],
-[class*="faq-item"] [class*="inner"],
-[class*="faq-item"] [class*="bt-rich-text"] {
-    border: none !important;
-    background: transparent !important;
-    box-shadow: none !important;
-}
-
-/* ===== CLICKABLE HEADER ===== */
-[class*="faq-item-header"] {
-    display: block !important;
-    cursor: pointer !important;
-    padding: 0 !important;
-    margin: 0 !important;
-}
-
-/* ===== HIDE CHECKBOX ===== */
-[class*="faq-item-accordion-heading-checkbox"],
-input[type="checkbox"][class*="faq"] {
-    position: absolute !important;
-    opacity: 0 !important;
-    pointer-events: none !important;
-    width: 0 !important;
-    height: 0 !important;
-}
-
-/* ===== ACCORDION HEADING (Question + Arrow) ===== */
-[class*="faq-item-accordion-heading-inner"] {
-    display: flex !important;
-    align-items: center !important;
-    justify-content: space-between !important;
-    padding: 18px 20px !important;
-    transition: background-color 0.2s ease !important;
-    gap: 16px !important;
-}
-
-[class*="faq-item-header"]:hover [class*="faq-item-accordion-heading-inner"] {
-    background-color: #fafafa !important;
-}
-
-/* ===== QUESTION TEXT ===== */
+/* 3. STYLE THE QUESTION HEADERS */
 .item-question, 
 [class*="item-question"] {
-    flex: 1 !important;
-    color: #333 !important;
-    font-weight: 600 !important;
-    font-size: 0.95rem !important;
-    padding-left: 32px !important;
-    position: relative !important;
-    margin: 0 !important;
-    line-height: 1.4 !important;
+    color: #18453B !important; /* MSU Green */
+    font-weight: 800 !important;
+    padding-left: 35px !important;
 }
 
-[class*="item-question"] [class*="bt-rich-text"],
-[class*="item-question"] .content {
-    padding: 0 !important;
-    margin: 0 !important;
-    color: inherit !important;
-    font-size: inherit !important;
-    font-weight: inherit !important;
-}
-
-/* ===== QUESTION MARK ICON (Circle with ?) ===== */
-.item-question::before,
-[class*="item-question"]::before {
-    content: "?" !important;
-    position: absolute !important;
-    left: 0 !important;
-    top: 1px !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    width: 20px !important;
-    height: 20px !important;
-    background-color: #666 !important;
-    color: white !important;
-    border-radius: 50% !important;
-    font-size: 0.8rem !important;
-    font-weight: 700 !important;
-    flex-shrink: 0 !important;
-}
-
-/* ===== CHEVRON/ARROW ICONS ===== */
-[class*="arrow-down-icon"],
-[class*="icons"][class*="arrow-down"] {
-    display: flex !important;
-    color: #999 !important;
-    font-size: 1.2rem !important;
-}
-
-[class*="arrow-up-icon"],
-[class*="icons"][class*="arrow-up"] {
-    display: none !important;
-    color: #999 !important;
-    font-size: 1.2rem !important;
-}
-
-/* Toggle arrows when expanded */
-input[type="checkbox"]:checked ~ [class*="accordion-heading-inner"] [class*="arrow-down"] {
-    display: none !important;
-}
-
-input[type="checkbox"]:checked ~ [class*="accordion-heading-inner"] [class*="arrow-up"] {
-    display: flex !important;
-}
-
-/* ===== ANSWER CONTENT (COLLAPSED BY DEFAULT) ===== */
+/* 4. EXPANDED ANSWER AREA */
 .faq-item-content,
 [class*="faq-item-content"] {
-    max-height: 0 !important;
-    overflow: hidden !important;
-    transition: max-height 0.3s ease, padding 0.3s ease !important;
-    padding: 0 20px !important;
-    background-color: transparent !important;
-    border-top: none !important;
-}
-
-/* ===== EXPANDED STATE ===== */
-input[type="checkbox"]:checked ~ .faq-item-content,
-input[type="checkbox"]:checked ~ [class*="faq-item-content"] {
-    max-height: 3000px !important;
-    padding: 0 20px 18px 52px !important; /* Align with question text */
-    background-color: transparent !important;
-    border-top: none !important;
-}
-
-/* ===== ANSWER TEXT STYLING ===== */
-[class*="faq-item-content"] [class*="bt-rich-text"],
-[class*="faq-item-content"] .content {
-    color: #666 !important;
-    font-size: 0.9rem !important;
-    line-height: 1.6 !important;
-    padding: 0 !important;
-    margin: 0 !important;
-}
-
-/* ===== "EXPAND ALL" BUTTON (IF PRESENT) ===== */
-[class*="expand-all"],
-button[class*="expand"] {
-    background: transparent !important;
-    border: 1px solid #ccc !important;
-    border-radius: 20px !important;
-    padding: 8px 16px !important;
-    font-size: 0.85rem !important;
-    color: #666 !important;
-    cursor: pointer !important;
-}
-
-/* ===== RESPONSIVE ADJUSTMENTS ===== */
-@media (max-width: 768px) {
-    [class*="faq-item-accordion-heading-inner"] {
-        padding: 14px 16px !important;
-    }
-    
-    [class*="item-question"] {
-        font-size: 0.9rem !important;
-        padding-left: 28px !important;
-    }
-    
-    [class*="item-question"]::before {
-        width: 18px !important;
-        height: 18px !important;
-        font-size: 0.75rem !important;
-    }
-    
-    input[type="checkbox"]:checked ~ [class*="faq-item-content"] {
-        padding: 0 16px 16px 44px !important;
-    }
-}
-
-/* ===== CLEAN UP ANY REMAINING NESTED BOXES ===== */
-div[class*="faq-items"] > div[class*="faq-items"],
-[class*="faq-content"] > [class*="faq-content"] {
-    border: none !important;
-    background: transparent !important;
-    box-shadow: none !important;
-    padding: 0 !important;
-    margin: 0 !important;
+    padding: 20px !important;
+    background-color: #f9f9f9 !important;
+    border-top: 1px solid #eeeeee !important;
 }
